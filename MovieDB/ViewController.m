@@ -10,6 +10,7 @@
 #import "MovieCollectionViewCell.h"
 #import "MovieDBDataController.h"
 #import "MovieDataModel.h"
+#import "UIImageView+WebCache.h"
 
 @interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -19,6 +20,8 @@
 @end
 
 @implementation ViewController
+
+NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,9 +54,7 @@
         }
         
     }];
-    
 }
-
 
 #pragma mark UICollectionViewDelegate and DataSource Methods
 
@@ -61,9 +62,11 @@
     MovieCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionViewCell" forIndexPath:indexPath];
     
     MovieDataModel *movieObject = [_movieArray objectAtIndex:indexPath.row];
+    NSURL *imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMAGE_HOST,movieObject.poster_path]];
     
     dispatch_async(dispatch_get_main_queue(), ^{
          cell.titleLabel.text = movieObject.original_title;
+        [cell.titleImageView sd_setImageWithURL:imageUrl placeholderImage:nil options:SDWebImageRetryFailed];
     });
    
     

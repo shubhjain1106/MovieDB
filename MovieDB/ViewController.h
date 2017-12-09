@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString* const IMAGE_HOST;
+
 @interface ViewController : UIViewController
 
 

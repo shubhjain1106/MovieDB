@@ -18,11 +18,13 @@
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
-        if (block) {
-            block(dictionary,error);
-        } else {
-            block(nil,error);
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (block) {
+                block(dictionary,error);
+            } else {
+                block(nil,error);
+            }
+        });
     }];
     [dataTask resume];
 }
