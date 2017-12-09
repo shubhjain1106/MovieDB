@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailsViewController">
+            <connections>
+                <outlet property="contentScrollView" destination="PZN-pZ-g22" id="BbV-kb-7id"/>
+                <outlet property="dateLabel" destination="Dji-SZ-6gB" id="aRn-RR-GuX"/>
+                <outlet property="movieImageVIew" destination="JYB-8m-mKy" id="jaU-7o-jfY"/>
+                <outlet property="movieTitleLabel" destination="k8v-5P-NvY" id="mw3-Kc-sUf"/>
+                <outlet property="plotLabel" destination="sKK-rl-od5" id="dgL-nm-nmQ"/>
+                <outlet property="ratingLabel" destination="sGx-pJ-qKM" id="zsX-No-Ntb"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZN-pZ-g22">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title Label khv hvkjh mvm  kgh k kgv" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="k8v-5P-NvY">
+                            <rect key="frame" x="16" y="16" width="288" height="41"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="288" id="AZf-Vi-qRn"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JYB-8m-mKy">
+                            <rect key="frame" x="16" y="73" width="288" height="200"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="4Se-Fq-Od5"/>
+                                <constraint firstAttribute="width" constant="288" id="xfY-cT-5BS"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dji-SZ-6gB" userLabel="Date Label">
+                            <rect key="frame" x="16" y="289" width="144" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="144" id="3E0-0L-Ck2"/>
+                                <constraint firstAttribute="height" constant="21" id="xah-aP-guS"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGx-pJ-qKM" userLabel="Rating Label">
+                            <rect key="frame" x="160" y="289" width="144" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="144" id="FWB-Ak-pu3"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="sKK-rl-od5" userLabel="Plot Label">
+                            <rect key="frame" x="16" y="326" width="288" height="224"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="288" id="TJy-5q-J8K"/>
+                            </constraints>
+                            <string key="text">Label dfg dfh erybwebyw nytrim nbvwtu netyjihbetutnemnho im4t70 ,9rmne6tf 8m o7968snbw vucqe5ybneom7 ,8m nbw4vcr tdghrtjy u78okj7 hgf cy vbnmo8 ,957 pmoneb vctv57 jo8k79 p,mon bvwce rtbjynk8 m968kn8 b7j6v5c 4 5v6b7 n857m9 p68n7 b76v5c uv6 bi7no8mp98 on8 iuv56cy45   7i6o8 p79km n8b7v 6c5  6v57b 68o ,9 m o8niebu wv45y </string>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Dji-SZ-6gB" firstAttribute="top" secondItem="JYB-8m-mKy" secondAttribute="bottom" constant="16" id="0M2-4d-CeF"/>
+                        <constraint firstItem="k8v-5P-NvY" firstAttribute="leading" secondItem="PZN-pZ-g22" secondAttribute="leading" constant="16" id="3U6-2g-Vy7"/>
+                        <constraint firstItem="sGx-pJ-qKM" firstAttribute="leading" secondItem="PZN-pZ-g22" secondAttribute="centerX" id="AIT-uh-L0l"/>
+                        <constraint firstItem="Dji-SZ-6gB" firstAttribute="trailing" secondItem="PZN-pZ-g22" secondAttribute="centerX" id="Iir-qd-bqA"/>
+                        <constraint firstItem="sGx-pJ-qKM" firstAttribute="top" secondItem="JYB-8m-mKy" secondAttribute="bottom" constant="16" id="JbC-qI-V2F"/>
+                        <constraint firstItem="sKK-rl-od5" firstAttribute="top" secondItem="sGx-pJ-qKM" secondAttribute="bottom" constant="16" id="NCe-hm-QQG"/>
+                        <constraint firstItem="sKK-rl-od5" firstAttribute="leading" secondItem="PZN-pZ-g22" secondAttribute="leading" constant="16" id="P6H-Br-nsC"/>
+                        <constraint firstAttribute="bottom" secondItem="sKK-rl-od5" secondAttribute="bottom" constant="16" id="PD6-dk-bHv"/>
+                        <constraint firstAttribute="trailing" secondItem="k8v-5P-NvY" secondAttribute="trailing" constant="16" id="Pf3-lN-JNa"/>
+                        <constraint firstItem="sKK-rl-od5" firstAttribute="trailing" secondItem="PZN-pZ-g22" secondAttribute="trailing" constant="-16" id="STZ-QN-DHh"/>
+                        <constraint firstItem="sGx-pJ-qKM" firstAttribute="height" secondItem="Dji-SZ-6gB" secondAttribute="height" id="T0S-NU-BrT"/>
+                        <constraint firstItem="JYB-8m-mKy" firstAttribute="top" secondItem="k8v-5P-NvY" secondAttribute="bottom" constant="16" id="aaL-we-yRF"/>
+                        <constraint firstItem="sGx-pJ-qKM" firstAttribute="trailing" secondItem="PZN-pZ-g22" secondAttribute="trailing" constant="-16" id="ezz-tE-f8B"/>
+                        <constraint firstAttribute="trailing" secondItem="JYB-8m-mKy" secondAttribute="trailing" constant="16" id="gEq-7C-Yci"/>
+                        <constraint firstItem="k8v-5P-NvY" firstAttribute="top" secondItem="PZN-pZ-g22" secondAttribute="top" constant="16" id="ozh-SP-6cI"/>
+                        <constraint firstItem="Dji-SZ-6gB" firstAttribute="leading" secondItem="PZN-pZ-g22" secondAttribute="leading" constant="16" id="uX3-Tf-1eF"/>
+                        <constraint firstItem="JYB-8m-mKy" firstAttribute="leading" secondItem="PZN-pZ-g22" secondAttribute="leading" constant="16" id="wxT-5d-3Xo"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="PZN-pZ-g22" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="JrP-7I-jBl"/>
+                <constraint firstAttribute="bottom" secondItem="PZN-pZ-g22" secondAttribute="bottom" id="LAH-6W-Xxn"/>
+                <constraint firstItem="PZN-pZ-g22" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="XId-hx-yze"/>
+                <constraint firstItem="PZN-pZ-g22" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="etW-Dg-aBB"/>
+                <constraint firstItem="PZN-pZ-g22" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jiT-tx-jU9"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

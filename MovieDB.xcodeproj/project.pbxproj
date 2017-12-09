@@ -38,6 +38,8 @@
 		510E69771FDBD7BB00726918 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 510E69651FDBD7BA00726918 /* UIImageView+HighlightedWebCache.m */; };
 		510E69781FDBD7BB00726918 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 510E69671FDBD7BA00726918 /* UIImageView+WebCache.m */; };
 		510E69791FDBD7BB00726918 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 510E69691FDBD7BA00726918 /* UIView+WebCacheOperation.m */; };
+		51CB77CA1FDBFF2400D65A09 /* MovieDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CB77C81FDBFF2400D65A09 /* MovieDetailsViewController.m */; };
+		51CB77CB1FDBFF2400D65A09 /* MovieDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51CB77C91FDBFF2400D65A09 /* MovieDetailsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,9 @@
 		510E69671FDBD7BA00726918 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		510E69681FDBD7BA00726918 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		510E69691FDBD7BA00726918 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		51CB77C71FDBFF2400D65A09 /* MovieDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailsViewController.h; sourceTree = "<group>"; };
+		51CB77C81FDBFF2400D65A09 /* MovieDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailsViewController.m; sourceTree = "<group>"; };
+		51CB77C91FDBFF2400D65A09 /* MovieDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieDetailsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +197,9 @@
 				510E68121FDB931500726918 /* MovieDataModel.m */,
 				510E68141FDB946900726918 /* NSObject+Initialisation.h */,
 				510E68151FDB946900726918 /* NSObject+Initialisation.m */,
+				51CB77C71FDBFF2400D65A09 /* MovieDetailsViewController.h */,
+				51CB77C81FDBFF2400D65A09 /* MovieDetailsViewController.m */,
+				51CB77C91FDBFF2400D65A09 /* MovieDetailsViewController.xib */,
 			);
 			path = MovieDB;
 			sourceTree = "<group>";
@@ -383,6 +391,7 @@
 				510E67D51FDB816000726918 /* Assets.xcassets in Resources */,
 				510E67D31FDB816000726918 /* Main.storyboard in Resources */,
 				510E680D1FDB859600726918 /* MovieCollectionViewCell.xib in Resources */,
+				51CB77CB1FDBFF2400D65A09 /* MovieDetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +421,7 @@
 				510E696B1FDBD7BA00726918 /* NSData+ImageContentType.m in Sources */,
 				510E696D1FDBD7BB00726918 /* SDWebImageCompat.m in Sources */,
 				510E69791FDBD7BB00726918 /* UIView+WebCacheOperation.m in Sources */,
+				51CB77CA1FDBFF2400D65A09 /* MovieDetailsViewController.m in Sources */,
 				510E69761FDBD7BB00726918 /* UIImage+WebP.m in Sources */,
 				510E68161FDB946900726918 /* NSObject+Initialisation.m in Sources */,
 				510E69771FDBD7BB00726918 /* UIImageView+HighlightedWebCache.m in Sources */,

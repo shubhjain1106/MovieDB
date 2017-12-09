@@ -11,6 +11,7 @@
 #import "MovieDBDataController.h"
 #import "MovieDataModel.h"
 #import "UIImageView+WebCache.h"
+#import "MovieDetailsViewController.h"
 
 @interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -67,15 +68,9 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
     NSURL *imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMAGE_HOST,movieObject.poster_path]];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-         cell.titleLabel.text = movieObject.original_title;
+         cell.titleLabel.text = movieObject.title;
         [cell.titleImageView sd_setImageWithURL:imageUrl placeholderImage:nil options:SDWebImageRetryFailed];
     });
-   
-    
-//    dispatch_async(<#dispatch_queue_t  _Nonnull queue#>, <#^(void)block#>)
-    
-//    cell.titleImageView set
-    
     return cell;
 }
 
@@ -83,5 +78,11 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
     return _movieArray.count;
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    MovieDetailsViewController *detailsViewController = [[MovieDetailsViewController alloc] initWithNibName:@"MovieDetailsViewController" bundle:nil];
+    detailsViewController.movieDataModel = [_movieArray objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:detailsViewController animated:YES];
+}
 
 @end

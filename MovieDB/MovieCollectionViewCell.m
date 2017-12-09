@@ -7,6 +7,7 @@
 //
 
 #import "MovieCollectionViewCell.h"
+#import "MovieDataModel.h"
 
 @implementation MovieCollectionViewCell
 
@@ -14,7 +15,5 @@
     [super awakeFromNib];
     // Initialization code
 }
-
-
 
 @end
