@@ -27,6 +27,8 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     [self getMovieData];
     
     [_movieCollectionView registerNib:[UINib nibWithNibName:@"MovieCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"MovieCollectionViewCell"];
