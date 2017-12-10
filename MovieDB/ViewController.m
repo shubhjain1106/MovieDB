@@ -16,8 +16,6 @@
 
 #define SortType(x) [@[@"popularity.desc",@"vote_average.desc"] objectAtIndex:x]
 #define SEARCH_BAR_PLACEHOLDER_TEXT @"Search for movies here"
-#define CELL_WIDTH [UIScreen mainScreen].bounds.size.width
-#define CELL_HEIGHT 160
 
 @interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource, SortOrderProtocol, UISearchBarDelegate>
 
