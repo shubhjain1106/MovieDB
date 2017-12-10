@@ -29,16 +29,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4p0-OE-6aT" customClass="MovieCollectionViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="hGq-HA-7Wg"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Epl-a0-nbs"/>
@@ -47,10 +38,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="hz3-h7-7GS" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="Dwa-a7-oIm"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hz3-h7-7GS" secondAttribute="bottom" id="NeU-0a-W4I"/>
-                            <constraint firstItem="hz3-h7-7GS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="h7l-S5-Teh"/>
-                            <constraint firstItem="hz3-h7-7GS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uRy-CN-nvc"/>
+                            <constraint firstItem="hz3-h7-7GS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="1zd-QT-7JU"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hz3-h7-7GS" secondAttribute="bottom" id="HYo-BR-Nqq"/>
+                            <constraint firstItem="hz3-h7-7GS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MiT-Kh-2bi"/>
+                            <constraint firstAttribute="trailing" secondItem="hz3-h7-7GS" secondAttribute="trailing" id="jNY-Fc-EP2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yvx-Za-Ygi"/>

@@ -37,7 +37,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JYB-8m-mKy">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="JYB-8m-mKy">
                             <rect key="frame" x="16" y="73" width="288" height="200"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="200" id="4Se-Fq-Od5"/>
@@ -105,4 +105,7 @@
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="ImagePlaceholder" width="75" height="75"/>
+    </resources>
 </document>

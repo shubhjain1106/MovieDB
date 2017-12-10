@@ -16,6 +16,8 @@
 
 #define SortType(x) [@[@"popularity.desc",@"vote_average.desc"] objectAtIndex:x]
 #define SEARCH_BAR_PLACEHOLDER_TEXT @"Search for movies here"
+#define CELL_WIDTH [UIScreen mainScreen].bounds.size.width
+#define CELL_HEIGHT 160
 
 @interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource, SortOrderProtocol, UISearchBarDelegate>
 
@@ -72,6 +74,10 @@ NSString* const API_HOST = @"https://api.themoviedb.org/3/";
     
     //Register nib for collection view
     [_movieCollectionView registerNib:[UINib nibWithNibName:@"MovieCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"MovieCollectionViewCell"];
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.movieCollectionView.collectionViewLayout;
+    CGFloat screenWidth = CGRectGetWidth([UIScreen mainScreen].bounds);
+    layout.estimatedItemSize = CGSizeMake(screenWidth / 2, 160.0);
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -100,6 +106,9 @@ NSString* const API_HOST = @"https://api.themoviedb.org/3/";
     
     //Emoty colection view
     [_movieCollectionView reloadData];
+    
+    //Invalidate layout
+    [_movieCollectionView.collectionViewLayout invalidateLayout];
     
     //Reset collection view offset
     _movieCollectionView.contentOffset = CGPointMake(0, 0);
@@ -156,7 +165,7 @@ NSString* const API_HOST = @"https://api.themoviedb.org/3/";
     
     NSString *urlString = [self getUrl];
     
-    NSLog(@"%@",urlString);
+//    NSLog(@"%@",urlString);
     
     [[MovieDBDataController sharedInstance] getMovieDataForUrl:urlString andCompletionBlock:^(NSArray *movieList, NSError *error) {
        
@@ -231,13 +240,23 @@ NSString* const API_HOST = @"https://api.themoviedb.org/3/";
     [self.navigationController pushViewController:detailsViewController animated:YES];
 }
 
--(void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NSInteger loadMoreIndex = [_movieArray count] - 4;
-    
-    //Initiate call for new batch of data as the last 2nd row gets allocated (last 4th element)
-    if ((loadMoreIndex > 0) && (indexPath.row == loadMoreIndex)) {
-        [self getMovieData];
+#pragma mark UIScrollView Delegate Methods
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if([scrollView isEqual:self.movieCollectionView])
+    {
+        CGPoint offset = scrollView.contentOffset;
+        CGRect bounds = scrollView.bounds;
+        CGSize size = scrollView.contentSize;
+
+        float y = offset.y + bounds.size.height;
+        float h = size.height;
+        
+        if(y > h) {
+            
+            __weak ViewController * weakSelf = self;
+            [weakSelf getMovieData];
+        }
     }
 }
 
