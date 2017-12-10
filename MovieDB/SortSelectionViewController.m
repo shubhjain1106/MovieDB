@@ -25,7 +25,7 @@
     [_sortTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TableViewCell"];
     
     //To remove extraneous cell separators
-    _sortTableView.tableFooterView.frame = CGRectZero;
+    _sortTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)didReceiveMemoryWarning {

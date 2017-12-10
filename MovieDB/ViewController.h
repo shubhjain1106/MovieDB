@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 extern NSString* const IMAGE_HOST;
+extern NSString* const API_HOST;
 
 @interface ViewController : UIViewController
 

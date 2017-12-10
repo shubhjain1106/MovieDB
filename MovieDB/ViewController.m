@@ -15,8 +15,9 @@
 #import "SortSelectionViewController.h"
 
 #define SortType(x) [@[@"popularity.desc",@"vote_average.desc"] objectAtIndex:x]
+#define SEARCH_BAR_PLACEHOLDER_TEXT @"Search for movies here"
 
-@interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource, SortOrderProtocol>
+@interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource, SortOrderProtocol, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *movieCollectionView;
 @property (strong, nonatomic) NSMutableArray *movieArray;
@@ -25,12 +26,34 @@
 @property (strong, nonatomic) NSString *sortTypeString;
 @property (assign, nonatomic) SortOrder currentSortOrder;
 @property (assign, nonatomic) SortOrder newSortOrder;
+@property (strong, nonatomic) UISearchBar *movieSearchBar;
+@property (strong, nonatomic) NSMutableString *queryString;
 
 @end
 
 @implementation ViewController
 
 NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
+NSString* const API_HOST = @"https://api.themoviedb.org/3/";
+
+#pragma mark Lazy initialisers
+
+-(UISearchBar *)movieSearchBar {
+    
+    if(!_movieSearchBar) {
+        
+        _movieSearchBar = [[UISearchBar alloc] init];
+        _movieSearchBar.barStyle = UISearchBarStyleMinimal;
+        _movieSearchBar.placeholder = SEARCH_BAR_PLACEHOLDER_TEXT;
+        _movieSearchBar.translucent = NO;
+        _movieSearchBar.enablesReturnKeyAutomatically = YES;
+        [_movieSearchBar setShowsCancelButton:YES animated:YES];
+        _movieSearchBar.delegate = self;
+    }
+    return _movieSearchBar;
+}
+
+#pragma mark UIView Lifecycle Methods
 
 - (void)viewDidLoad {
     
@@ -66,10 +89,14 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
 
 -(void)resetDataParameters {
     
+    //reset page number
     _pageNumber = 1;
     
     //Initialise data array
     _movieArray = [[NSMutableArray alloc] init];
+    
+    //reset query string
+    _queryString = [[NSMutableString alloc] init];
     
     //Emoty colection view
     [_movieCollectionView reloadData];
@@ -93,7 +120,7 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
 }
 
 -(UIBarButtonItem *)initialiseSortButtonItem {
-    return [[UIBarButtonItem alloc] initWithTitle:@"Sort" style:UIBarButtonItemStylePlain target:self action:@selector(sortButtonClicked:)];
+    return [[UIBarButtonItem alloc] initWithTitle:@"Sort By" style:UIBarButtonItemStylePlain target:self action:@selector(sortButtonClicked:)];
 }
 
 -(UIBarButtonItem *)initialiseSearchButtonItem {
@@ -111,6 +138,10 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
 
 -(void)searchButtonClicked:(UIBarButtonItem *)barButtonItem {
     
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationItem.titleView = self.movieSearchBar;
+    [_movieSearchBar becomeFirstResponder];
 }
 
 #pragma mark Data Handling Methods
@@ -123,7 +154,7 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
     
     _alreadyLoading = true;
     
-    NSString *urlString = [NSString stringWithFormat:@"https://api.themoviedb.org/3/discover/movie?api_key=0ddc36d953e452ac2e0de094321e5d9d&page=%d&sort_by=%@",(int)_pageNumber,SortType(_currentSortOrder)];
+    NSString *urlString = [self getUrl];
     
     NSLog(@"%@",urlString);
     
@@ -157,6 +188,21 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
             _pageNumber++;
         }
     }];
+}
+
+-(NSString *)getUrl {
+    
+    NSMutableString *urlString = [[NSMutableString alloc] initWithString:API_HOST];
+    
+    if(self.navigationItem.titleView == self.movieSearchBar) {
+        [urlString appendString:@"search/movie?api_key=0ddc36d953e452ac2e0de094321e5d9d&"];
+    } else {
+        [urlString appendString:@"discover/movie?api_key=0ddc36d953e452ac2e0de094321e5d9d&"];
+    }
+    
+    [urlString appendFormat:@"page=%d&sort_by=%@&query=%@",(int)_pageNumber,SortType(_currentSortOrder),_queryString];
+    
+    return urlString;
 }
 
 #pragma mark UICollectionViewDelegate and DataSource Methods
@@ -193,6 +239,37 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
     if ((loadMoreIndex > 0) && (indexPath.row == loadMoreIndex)) {
         [self getMovieData];
     }
+}
+
+#pragma mark Search Bar Delegate Methods
+
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    self.navigationItem.titleView = nil;
+    
+    [_movieSearchBar resignFirstResponder];
+    
+    searchBar.text = @"";
+    
+    [self setupNavigationItems];
+    [self resetDataParameters];
+    [self getMovieData];
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    //Set first row from the auto complete table view on search button click (indexPathForSelectedRow -> default value - zero)
+    if(!searchBar.text)
+        return;
+    
+    [_movieSearchBar resignFirstResponder];
+    [self resetDataParameters];
+    
+    //Get encoded search string (for space etc.)
+    _queryString = [[searchBar.text stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]] mutableCopy];
+    
+    [self getMovieData];
+    
 }
 
 #pragma mark SortOrderProtocol Delegate Methods
