@@ -30,7 +30,6 @@
                                 <rect key="frame" x="8" y="132" width="191" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="gFQ-77-l7h"/>
-                                    <constraint firstAttribute="width" constant="191" id="nVU-cS-Q9r"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -42,6 +41,7 @@
                             <constraint firstItem="CtB-kb-H7q" firstAttribute="leading" secondItem="rDM-ey-Ir9" secondAttribute="leading" constant="8" id="6nh-Ea-Lkp"/>
                             <constraint firstItem="KVb-jU-QO7" firstAttribute="top" secondItem="CtB-kb-H7q" secondAttribute="bottom" constant="8" id="RcK-Ha-gwp"/>
                             <constraint firstAttribute="bottom" secondItem="KVb-jU-QO7" secondAttribute="bottom" constant="8" id="RtJ-vU-27e"/>
+                            <constraint firstItem="CtB-kb-H7q" firstAttribute="width" secondItem="rDM-ey-Ir9" secondAttribute="width" constant="-16" id="UFj-1d-59X"/>
                             <constraint firstItem="CtB-kb-H7q" firstAttribute="top" secondItem="rDM-ey-Ir9" secondAttribute="top" constant="8" id="hJZ-75-aYW"/>
                             <constraint firstItem="KVb-jU-QO7" firstAttribute="leading" secondItem="rDM-ey-Ir9" secondAttribute="leading" constant="8" id="mGe-0P-d1k"/>
                             <constraint firstAttribute="trailing" secondItem="KVb-jU-QO7" secondAttribute="trailing" constant="8" id="nzg-Sg-sgF"/>
@@ -58,7 +58,6 @@
             </constraints>
             <size key="customSize" width="207" height="161"/>
             <connections>
-                <outlet property="labelWidthConstraint" destination="nVU-cS-Q9r" id="WCH-Vh-ovb"/>
                 <outlet property="titleImageView" destination="CtB-kb-H7q" id="BjI-bE-mOe"/>
                 <outlet property="titleLabel" destination="KVb-jU-QO7" id="Whv-r3-ejf"/>
             </connections>

@@ -17,12 +17,11 @@ typedef NS_ENUM(NSInteger, SortOrder) {
 
 -(void)setSortOrder:(SortOrder)sortOrder;
 
-@property (weak, nonatomic) id <SortOrderProtocol> sortOrderDelegate;
-
 @end
+
 
 @interface SortSelectionViewController : UIViewController
 
-@property (weak, nonatomic) id sortOrderDelegate;
+@property (weak, nonatomic) id <SortOrderProtocol> sortOrderDelegate;
 
 @end

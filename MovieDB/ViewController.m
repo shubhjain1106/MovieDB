@@ -33,7 +33,7 @@
 
 @implementation ViewController
 
-NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
+NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w300/";
 NSString* const API_HOST = @"https://api.themoviedb.org/3/";
 
 #pragma mark Lazy initialisers
@@ -218,7 +218,7 @@ NSString* const API_HOST = @"https://api.themoviedb.org/3/";
     MovieCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionViewCell" forIndexPath:indexPath];
     
     MovieDataModel *movieObject = [_movieArray objectAtIndex:indexPath.row];
-    NSURL *imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMAGE_HOST,movieObject.poster_path]];
+    NSURL *imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMAGE_HOST,movieObject.backdrop_path]];
     
     dispatch_async(dispatch_get_main_queue(), ^{
          cell.titleLabel.text = movieObject.title;

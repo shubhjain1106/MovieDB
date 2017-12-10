@@ -46,17 +46,18 @@
     self.movieTitleLabel.text = _movieDataModel.original_title;
     
     //Set image
-    NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://image.tmdb.org/t/p/w780/%@",_movieDataModel.poster_path]];
+    NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://image.tmdb.org/t/p/w780/%@",_movieDataModel.backdrop_path]];
     [self.movieImageVIew sd_setImageWithURL:imageURL placeholderImage:nil options:SDWebImageRetryFailed];
     
     //Set release date
-    self.dateLabel.text = _movieDataModel.release_date;
+    self.dateLabel.text = [self.dateLabel.text stringByAppendingString:_movieDataModel.release_date];
     
     //Set rating
-    self.ratingLabel.text = [NSString stringWithFormat:@"%.1f",_movieDataModel.vote_average]; ;
+    self.ratingLabel.text = [self.ratingLabel.text stringByAppendingFormat:@"%.1f",_movieDataModel.vote_average];
     
     //Set overview
     self.plotLabel.text = _movieDataModel.overview;
+    [self.plotLabel sizeToFit];
 }
 
 /*

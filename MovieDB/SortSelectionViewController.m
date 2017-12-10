@@ -59,6 +59,7 @@
         [self.sortOrderDelegate setSortOrder:(SortOrder)indexPath.row];
     }
     
+    //Dismiss view controller after selection and reload data 
     [self.navigationController popViewControllerAnimated:YES];
 }
 
