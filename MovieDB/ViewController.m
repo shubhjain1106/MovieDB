@@ -28,9 +28,15 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    //To remove extra space at the top of collection view
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    //Get data
     [self getMovieData];
+    
+    //Set navigation item title
+    self.navigationItem.title = @"Movie List";
+    
     
     [_movieCollectionView registerNib:[UINib nibWithNibName:@"MovieCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"MovieCollectionViewCell"];
 }

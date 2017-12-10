@@ -27,6 +27,8 @@
     // Do any additional setup after loading the view from its nib.
     
     [self setMovieData];
+    
+    self.navigationItem.title = @"Movie Details";
 }
 
 -(void)viewWillAppear:(BOOL)animated {
