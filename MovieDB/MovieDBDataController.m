@@ -27,7 +27,7 @@
     [HttpClientUtil getDataForUrl:urlString WithCompletionBlock:^(NSDictionary *movieResponse, NSError *error) {
         
         if(error) {
-            
+            //Error handling
         } else {
             NSArray *movieArray = [MovieDataModel arrayOfModelsFromDictionary:[movieResponse objectForKey:@"results"]];
             block(movieArray, nil);

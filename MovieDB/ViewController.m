@@ -16,7 +16,9 @@
 @interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *movieCollectionView;
-@property (strong, nonatomic) NSArray *movieArray;
+@property (strong, nonatomic) NSMutableArray *movieArray;
+@property (assign, nonatomic) NSInteger pageNumber;
+@property (assign, nonatomic) BOOL alreadyLoading;
 
 @end
 
@@ -30,6 +32,12 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
     
     //To remove extra space at the top of collection view
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    //Initialise data array
+    _movieArray = [[NSMutableArray alloc] init];
+    
+    //default
+    _pageNumber = 1;
     
     //Get data
     [self getMovieData];
@@ -51,17 +59,43 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
 
 -(void)getMovieData {
     
-    NSString *urlString = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=0ddc36d953e452ac2e0de094321e5d9d";
+    //To avoid duplicate data requests from scrollview load more scroll limit while data fetching
+    if(_alreadyLoading)
+        return;
+    
+    _alreadyLoading = true;
+    
+    NSString *urlString = [NSString stringWithFormat:@"https://api.themoviedb.org/3/discover/movie?api_key=0ddc36d953e452ac2e0de094321e5d9d&page=%d",(int)_pageNumber];
     
     [[MovieDBDataController sharedInstance] getMovieDataForUrl:urlString andCompletionBlock:^(NSArray *movieList, NSError *error) {
        
+        _alreadyLoading = false;
+        
         if(error) {
             NSLog(@"ERROR");
         } else {
-            _movieArray = movieList;
-            [_movieCollectionView reloadData];
+            
+            //Current data array size
+            NSInteger itemCount = [self.movieArray count];
+            
+            //Array of idex paths
+            NSMutableArray *indexArray = [[NSMutableArray alloc] init];
+            
+            //Get index path array for current batch of items
+            for(int i=0;i < [movieList count] ; i++) {
+                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:(itemCount+i) inSection:0];
+                [indexArray addObject:indexPath];
+            }
+            
+            //Append api response to the data array
+            [_movieArray addObjectsFromArray:movieList];
+            
+            //Insert items in the collection view
+            [_movieCollectionView insertItemsAtIndexPaths:indexArray];
+            
+            //Increment page number on success
+            _pageNumber++;
         }
-        
     }];
 }
 
@@ -90,5 +124,16 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
     detailsViewController.movieDataModel = [_movieArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:detailsViewController animated:YES];
 }
+
+-(void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSInteger loadMoreIndex = [_movieArray count] - 4;
+    
+    //Initiate call for new batch of data as the last 2nd row gets allocated (last 4th element)
+    if ((loadMoreIndex > 0) && (indexPath.row == loadMoreIndex)) {
+        [self getMovieData];
+    }
+}
+
 
 @end
