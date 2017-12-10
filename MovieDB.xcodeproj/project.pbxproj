@@ -38,6 +38,8 @@
 		510E69771FDBD7BB00726918 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 510E69651FDBD7BA00726918 /* UIImageView+HighlightedWebCache.m */; };
 		510E69781FDBD7BB00726918 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 510E69671FDBD7BA00726918 /* UIImageView+WebCache.m */; };
 		510E69791FDBD7BB00726918 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 510E69691FDBD7BA00726918 /* UIView+WebCacheOperation.m */; };
+		51246A0D1FDCF7BE00162558 /* SortSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51246A0B1FDCF7BE00162558 /* SortSelectionViewController.m */; };
+		51246A0E1FDCF7BE00162558 /* SortSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51246A0C1FDCF7BE00162558 /* SortSelectionViewController.xib */; };
 		51CB77CA1FDBFF2400D65A09 /* MovieDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CB77C81FDBFF2400D65A09 /* MovieDetailsViewController.m */; };
 		51CB77CB1FDBFF2400D65A09 /* MovieDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51CB77C91FDBFF2400D65A09 /* MovieDetailsViewController.xib */; };
 /* End PBXBuildFile section */
@@ -121,6 +123,9 @@
 		510E69671FDBD7BA00726918 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		510E69681FDBD7BA00726918 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		510E69691FDBD7BA00726918 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		51246A0A1FDCF7BE00162558 /* SortSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortSelectionViewController.h; sourceTree = "<group>"; };
+		51246A0B1FDCF7BE00162558 /* SortSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortSelectionViewController.m; sourceTree = "<group>"; };
+		51246A0C1FDCF7BE00162558 /* SortSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortSelectionViewController.xib; sourceTree = "<group>"; };
 		51CB77C71FDBFF2400D65A09 /* MovieDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailsViewController.h; sourceTree = "<group>"; };
 		51CB77C81FDBFF2400D65A09 /* MovieDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailsViewController.m; sourceTree = "<group>"; };
 		51CB77C91FDBFF2400D65A09 /* MovieDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieDetailsViewController.xib; sourceTree = "<group>"; };
@@ -200,6 +205,9 @@
 				51CB77C71FDBFF2400D65A09 /* MovieDetailsViewController.h */,
 				51CB77C81FDBFF2400D65A09 /* MovieDetailsViewController.m */,
 				51CB77C91FDBFF2400D65A09 /* MovieDetailsViewController.xib */,
+				51246A0A1FDCF7BE00162558 /* SortSelectionViewController.h */,
+				51246A0B1FDCF7BE00162558 /* SortSelectionViewController.m */,
+				51246A0C1FDCF7BE00162558 /* SortSelectionViewController.xib */,
 			);
 			path = MovieDB;
 			sourceTree = "<group>";
@@ -388,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				510E67D81FDB816000726918 /* LaunchScreen.storyboard in Resources */,
+				51246A0E1FDCF7BE00162558 /* SortSelectionViewController.xib in Resources */,
 				510E67D51FDB816000726918 /* Assets.xcassets in Resources */,
 				510E67D31FDB816000726918 /* Main.storyboard in Resources */,
 				510E680D1FDB859600726918 /* MovieCollectionViewCell.xib in Resources */,
@@ -437,6 +446,7 @@
 				510E696C1FDBD7BB00726918 /* SDImageCache.m in Sources */,
 				510E67CA1FDB816000726918 /* main.m in Sources */,
 				510E68131FDB931500726918 /* MovieDataModel.m in Sources */,
+				51246A0D1FDCF7BE00162558 /* SortSelectionViewController.m in Sources */,
 				510E69741FDBD7BB00726918 /* UIImage+GIF.m in Sources */,
 				510E696F1FDBD7BB00726918 /* SDWebImageDownloader.m in Sources */,
 				510E69781FDBD7BB00726918 /* UIImageView+WebCache.m in Sources */,

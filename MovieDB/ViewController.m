@@ -12,13 +12,19 @@
 #import "MovieDataModel.h"
 #import "UIImageView+WebCache.h"
 #import "MovieDetailsViewController.h"
+#import "SortSelectionViewController.h"
 
-@interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+#define SortType(x) [@[@"popularity.asc",@"vote_average.asc",@"popularity.desc"] objectAtIndex:x]
+
+@interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource, SortOrderProtocol>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *movieCollectionView;
 @property (strong, nonatomic) NSMutableArray *movieArray;
 @property (assign, nonatomic) NSInteger pageNumber;
 @property (assign, nonatomic) BOOL alreadyLoading;
+@property (strong, nonatomic) NSString *sortTypeString;
+@property (assign, nonatomic) SortOrder currentSortOrder;
+@property (assign, nonatomic) SortOrder newSortOrder;
 
 @end
 
@@ -27,6 +33,7 @@
 NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
@@ -39,21 +46,50 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
     //default
     _pageNumber = 1;
     
-    //Get data
-    [self getMovieData];
+    //initialise sort orders by default value (lets say 99)
+    _currentSortOrder = INT_MAX;
+    _newSortOrder = SortOrderDefault;
     
-    //Set navigation item title
-    self.navigationItem.title = @"Movie List";
+    //Setup navigation bar
+    [self setupNavigationItems];
     
-    
+    //Register nib for collection view
     [_movieCollectionView registerNib:[UINib nibWithNibName:@"MovieCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"MovieCollectionViewCell"];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    
+    //Get data only if sort order is changed
+    if(_currentSortOrder != _newSortOrder) {
+        _currentSortOrder = _newSortOrder;
+        [self getMovieData];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)setupNavigationItems {
+    
+    //Set navigation item title
+    self.navigationItem.title = @"Movie List";
+    
+    UIBarButtonItem *sortButton = [[UIBarButtonItem alloc] initWithTitle:@"Sort" style:UIBarButtonItemStylePlain target:self action:@selector(sortButtonClicked:)];
+    
+    self.navigationItem.leftBarButtonItem = sortButton;
+}
+
+#pragma mark Action Methods
+
+-(void)sortButtonClicked:(UIBarButtonItem *)barButtonItem {
+    
+    SortSelectionViewController *sortViewController = [[SortSelectionViewController alloc] initWithNibName:@"SortSelectionViewController" bundle:nil];
+    sortViewController.sortOrderDelegate = self;
+    [self.navigationController pushViewController:sortViewController animated:YES];
+}
+     
 
 #pragma mark Data Handling Methods
 
@@ -65,7 +101,9 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
     
     _alreadyLoading = true;
     
-    NSString *urlString = [NSString stringWithFormat:@"https://api.themoviedb.org/3/discover/movie?api_key=0ddc36d953e452ac2e0de094321e5d9d&page=%d",(int)_pageNumber];
+    NSString *urlString = [NSString stringWithFormat:@"https://api.themoviedb.org/3/discover/movie?api_key=0ddc36d953e452ac2e0de094321e5d9d&page=%d&sort_by=%@",(int)_pageNumber,SortType(_currentSortOrder)];
+    
+    NSLog(@"%@",urlString);
     
     [[MovieDBDataController sharedInstance] getMovieDataForUrl:urlString andCompletionBlock:^(NSArray *movieList, NSError *error) {
        
@@ -135,5 +173,10 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
     }
 }
 
+#pragma mark SortOrderProtocol Delegate Methods
+
+-(void)setSortOrder:(SortOrder)sortOrder {
+    _newSortOrder = sortOrder;
+}
 
 @end
