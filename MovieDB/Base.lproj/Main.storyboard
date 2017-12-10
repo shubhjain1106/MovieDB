@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,6 +21,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecn-U4-17B">
+                                <rect key="frame" x="16" y="80" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hz3-h7-7GS">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,13 +47,17 @@
                         <constraints>
                             <constraint firstItem="hz3-h7-7GS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="1zd-QT-7JU"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hz3-h7-7GS" secondAttribute="bottom" id="HYo-BR-Nqq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ecn-U4-17B" secondAttribute="trailing" id="Hdh-Yf-Wnf"/>
+                            <constraint firstItem="ecn-U4-17B" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="MEp-GW-qi6"/>
                             <constraint firstItem="hz3-h7-7GS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MiT-Kh-2bi"/>
                             <constraint firstAttribute="trailing" secondItem="hz3-h7-7GS" secondAttribute="trailing" id="jNY-Fc-EP2"/>
+                            <constraint firstItem="ecn-U4-17B" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="n9s-7U-rIZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yvx-Za-Ygi"/>
                     <connections>
                         <outlet property="movieCollectionView" destination="hz3-h7-7GS" id="vN1-IX-fN7"/>
+                        <outlet property="noDataAvailableLabel" destination="ecn-U4-17B" id="PkH-an-BrV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

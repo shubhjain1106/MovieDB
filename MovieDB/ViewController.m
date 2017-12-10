@@ -28,6 +28,7 @@
 @property (assign, nonatomic) SortOrder newSortOrder;
 @property (strong, nonatomic) UISearchBar *movieSearchBar;
 @property (strong, nonatomic) NSMutableString *queryString;
+@property (weak, nonatomic) IBOutlet UILabel *noDataAvailableLabel;
 
 @end
 
@@ -69,6 +70,8 @@ NSString* const API_HOST = @"https://api.themoviedb.org/3/";
     
     //Setup navigation bar
     [self setupNavigationItems];
+    
+    [self.view bringSubviewToFront:_noDataAvailableLabel];
     
     //Register nib for collection view
     [_movieCollectionView registerNib:[UINib nibWithNibName:@"MovieCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"MovieCollectionViewCell"];
@@ -187,6 +190,9 @@ NSString* const API_HOST = @"https://api.themoviedb.org/3/";
             
             //Append api response to the data array
             [_movieArray addObjectsFromArray:movieList];
+            
+            //Handle no data label
+            [_noDataAvailableLabel setHidden:(_movieArray.count != 0)];
             
             //Insert items in the collection view
             [_movieCollectionView insertItemsAtIndexPaths:indexArray];

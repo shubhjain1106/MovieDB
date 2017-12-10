@@ -24,8 +24,4 @@
     _labelWidthConstraint.constant = [UIScreen mainScreen].bounds.size.width/2 - 16;
 }
 
--(UICollectionViewLayoutAttributes *)preferredLayoutAttributesFittingAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes {
-    return [super preferredLayoutAttributesFittingAttributes:layoutAttributes];
-}
-
 @end
