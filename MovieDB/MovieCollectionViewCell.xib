@@ -29,6 +29,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVb-jU-QO7">
                                 <rect key="frame" x="8" y="132" width="191" height="20"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="191" id="Laj-Eh-rpn"/>
                                     <constraint firstAttribute="height" constant="20" id="gFQ-77-l7h"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -58,6 +59,7 @@
             </constraints>
             <size key="customSize" width="207" height="161"/>
             <connections>
+                <outlet property="labelWidthConstraint" destination="Laj-Eh-rpn" id="Mwe-RB-3Fx"/>
                 <outlet property="titleImageView" destination="CtB-kb-H7q" id="BjI-bE-mOe"/>
                 <outlet property="titleLabel" destination="KVb-jU-QO7" id="Whv-r3-ejf"/>
             </connections>

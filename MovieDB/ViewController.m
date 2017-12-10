@@ -75,7 +75,7 @@ NSString* const API_HOST = @"https://api.themoviedb.org/3/";
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.movieCollectionView.collectionViewLayout;
     CGFloat screenWidth = CGRectGetWidth([UIScreen mainScreen].bounds);
-    layout.estimatedItemSize = CGSizeMake(screenWidth / 2, 160.0);
+    layout.estimatedItemSize = CGSizeMake(screenWidth/2.0, 160.0);
 }
 
 -(void)viewWillAppear:(BOOL)animated {
