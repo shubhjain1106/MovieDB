@@ -14,7 +14,7 @@
 #import "MovieDetailsViewController.h"
 #import "SortSelectionViewController.h"
 
-#define SortType(x) [@[@"popularity.asc",@"vote_average.asc",@"popularity.desc"] objectAtIndex:x]
+#define SortType(x) [@[@"popularity.desc",@"vote_average.desc"] objectAtIndex:x]
 
 @interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource, SortOrderProtocol>
 
@@ -40,15 +40,9 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
     //To remove extra space at the top of collection view
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    //Initialise data array
-    _movieArray = [[NSMutableArray alloc] init];
-    
-    //default
-    _pageNumber = 1;
-    
     //initialise sort orders by default value (lets say 99)
     _currentSortOrder = INT_MAX;
-    _newSortOrder = SortOrderDefault;
+    _newSortOrder = SortOrderMostPopular;
     
     //Setup navigation bar
     [self setupNavigationItems];
@@ -61,9 +55,27 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
     
     //Get data only if sort order is changed
     if(_currentSortOrder != _newSortOrder) {
+        
+        //Set sort order
         _currentSortOrder = _newSortOrder;
+        
+        [self resetDataParameters];
         [self getMovieData];
     }
+}
+
+-(void)resetDataParameters {
+    
+    _pageNumber = 1;
+    
+    //Initialise data array
+    _movieArray = [[NSMutableArray alloc] init];
+    
+    //Emoty colection view
+    [_movieCollectionView reloadData];
+    
+    //Reset collection view offset
+    _movieCollectionView.contentOffset = CGPointMake(0, 0);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,9 +88,16 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
     //Set navigation item title
     self.navigationItem.title = @"Movie List";
     
-    UIBarButtonItem *sortButton = [[UIBarButtonItem alloc] initWithTitle:@"Sort" style:UIBarButtonItemStylePlain target:self action:@selector(sortButtonClicked:)];
-    
-    self.navigationItem.leftBarButtonItem = sortButton;
+    self.navigationItem.leftBarButtonItem = [self initialiseSortButtonItem];
+    self.navigationItem.rightBarButtonItem = [self initialiseSearchButtonItem];
+}
+
+-(UIBarButtonItem *)initialiseSortButtonItem {
+    return [[UIBarButtonItem alloc] initWithTitle:@"Sort" style:UIBarButtonItemStylePlain target:self action:@selector(sortButtonClicked:)];
+}
+
+-(UIBarButtonItem *)initialiseSearchButtonItem {
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchButtonClicked:)];
 }
 
 #pragma mark Action Methods
@@ -89,7 +108,10 @@ NSString* const IMAGE_HOST = @"https://image.tmdb.org/t/p/w500/";
     sortViewController.sortOrderDelegate = self;
     [self.navigationController pushViewController:sortViewController animated:YES];
 }
-     
+
+-(void)searchButtonClicked:(UIBarButtonItem *)barButtonItem {
+    
+}
 
 #pragma mark Data Handling Methods
 

@@ -11,7 +11,6 @@
 typedef NS_ENUM(NSInteger, SortOrder) {
     SortOrderMostPopular,
     SortOrderHighestRated,
-    SortOrderDefault
 };
 
 @protocol SortOrderProtocol <NSObject>

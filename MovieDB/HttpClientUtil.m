@@ -13,7 +13,7 @@
 +(void)getDataForUrl:(NSString *)urlString WithCompletionBlock:(APIResponseBlock)block {
     
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURL *url = [NSURL URLWithString: urlString];
+    NSURL *url = [NSURL URLWithString:urlString];
     
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];

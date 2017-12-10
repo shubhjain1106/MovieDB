@@ -53,7 +53,7 @@
     self.dateLabel.text = _movieDataModel.release_date;
     
     //Set rating
-    self.ratingLabel.text = [NSString stringWithFormat:@"%f",_movieDataModel.vote_average]; ;
+    self.ratingLabel.text = [NSString stringWithFormat:@"%.1f",_movieDataModel.vote_average]; ;
     
     //Set overview
     self.plotLabel.text = _movieDataModel.overview;

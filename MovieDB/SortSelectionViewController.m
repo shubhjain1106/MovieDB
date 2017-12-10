@@ -23,6 +23,9 @@
     
     [self initialiseSortArray];
     [_sortTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TableViewCell"];
+    
+    //To remove extraneous cell separators
+    _sortTableView.tableFooterView.frame = CGRectZero;
 }
 
 - (void)didReceiveMemoryWarning {
