@@ -228,7 +228,7 @@ NSString* const API_HOST = @"https://api.themoviedb.org/3/";
     
     dispatch_async(dispatch_get_main_queue(), ^{
          cell.titleLabel.text = movieObject.title;
-        [cell.titleImageView sd_setImageWithURL:imageUrl completed:nil];
+        [cell.titleImageView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"ImagePlaceholder"] completed:nil];
     });
     return cell;
 }

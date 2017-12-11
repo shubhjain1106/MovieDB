@@ -47,7 +47,7 @@
     
     //Set image
     NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://image.tmdb.org/t/p/w780/%@",_movieDataModel.backdrop_path]];
-    [self.movieImageVIew sd_setImageWithURL:imageURL completed:nil];
+    [self.movieImageVIew sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"ImagePlaceholder"] completed:nil];
     
     //Set release date
     self.dateLabel.text = [self.dateLabel.text stringByAppendingString:_movieDataModel.release_date];
